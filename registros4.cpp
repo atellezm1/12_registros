@@ -13,7 +13,9 @@ struct deportistas{
 
 int main (){
     deportistas deportista[100];
-    int num;
+    int num,may,a;
+    string p;
+    may=0;
     cout<<"INGRESE LA CANTIDAD DE DEPORTISTAS: "<<endl;
     cin>>num;
     cin.ignore(100,'\n');
@@ -29,9 +31,22 @@ int main (){
         cin>>deportista[i].medallas;
         cin.ignore(100,'\n');
 	}
-}
+	cout<<"INGRESE EN NOMBRE DE UN PAIS: "<<endl;
+    getline(cin,p);
+    cout<<"Los deportistas de ese pais son: "<<endl;
+    for(int i=1;i<=num;i++){
+        if(p==deportista[i].pais){
+            cout<<deportista[i].nombres<<endl;
+            cout<<deportista[i].diciplina<<endl;
+            if(deportista[i].medallas>may){
+                may=deportista[i].medallas;
+                a=i;
+            }
 
-
-	
+        }
+    }
+    cout<<"El deportista con mas medallas de ese pais es: "<<endl;
+    cout<<deportista[a].nombres<<endl;
+    cout<<"El cual cuenta con "<<deportista[a].medallas<<" medallas "<<endl;
     return 0;
 }
